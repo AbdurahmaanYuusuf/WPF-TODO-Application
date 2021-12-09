@@ -1,0 +1,34 @@
+﻿<Window x:Class="WPF_TODO_Application.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_TODO_Application"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Choose Operation To Perform"
+                   Height="50" Width="400"
+                   Grid.Row="0"
+                   FontWeight="Bold"
+                   FontSize="25" 
+                   VerticalAlignment="Bottom"
+                   Margin="0"/>
+        <StackPanel  Grid.Row="1" HorizontalAlignment="Center"
+                     VerticalAlignment="Top">
+            <Button x:Name="AddCard" Content="Add Card" Width="200" 
+                    Height="65" HorizontalAlignment="Center"/>
+            <Button x:Name="RemoveCard" Content="Remove Card" Width="200" 
+                    Height="65" HorizontalAlignment="Center" />
+            <Button x:Name="MoveCard" Content="Move Card Column" Width="200" 
+                    Height="65" HorizontalAlignment="Center" />
+            <Button x:Name="ShowBoard" Content="Show Board" Width="200" 
+                    Height="65" HorizontalAlignment="Center" />
+        </StackPanel>
+    </Grid>
+</Window>

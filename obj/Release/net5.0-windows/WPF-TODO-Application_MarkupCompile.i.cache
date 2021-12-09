@@ -1,0 +1,20 @@
+﻿WPF-TODO-Application
+1.0.0.0
+
+winexe
+C#
+.cs
+C:\Users\stajyer\source\repos\ToDo Application\WPF-TODO-Application\obj\Release\net5.0-windows\
+WPF_TODO_Application
+none
+false
+TRACE;RELEASE;NET;NET5_0;NETCOREAPP
+C:\Users\stajyer\source\repos\ToDo Application\WPF-TODO-Application\App.xaml
+5459235778
+
+9-1608982775
+193-1891726104
+Views\AddCardWindow.xaml;Views\MainWindow.xaml;Views\MoveCardWindow.xaml;Views\RemoveCardWindow.xaml;Views\ShowBoardWindow.xaml;
+
+False
+
