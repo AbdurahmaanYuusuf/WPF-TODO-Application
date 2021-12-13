@@ -7,33 +7,39 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Views\AddCardWindow.xaml.cs">
+    <Compile Update="Views\MoveCardPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\MoveCardWindow.xaml.cs">
+    <Compile Update="Views\AddCardPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\RemoveCardWindow.xaml.cs">
+    <Compile Update="Views\Landing.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\ShowBoardWindow.xaml.cs">
+    <Compile Update="Views\RemoveCardPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\ShowBoardPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Views\AddCardWindow.xaml">
+    <Page Update="Views\MoveCardPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AddCardPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Landing.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\MoveCardWindow.xaml">
+    <Page Update="Views\RemoveCardPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\RemoveCardWindow.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Views\ShowBoardWindow.xaml">
+    <Page Update="Views\ShowBoardPage.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

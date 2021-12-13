@@ -8,27 +8,7 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="150"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <TextBlock Text="Choose Operation To Perform"
-                   Height="50" Width="400"
-                   Grid.Row="0"
-                   FontWeight="Bold"
-                   FontSize="25" 
-                   VerticalAlignment="Bottom"
-                   Margin="0"/>
-        <StackPanel  Grid.Row="1" HorizontalAlignment="Center"
-                     VerticalAlignment="Top">
-            <Button x:Name="AddCard" Content="Add Card" Width="200" 
-                    Height="65" HorizontalAlignment="Center"/>
-            <Button x:Name="RemoveCard" Content="Remove Card" Width="200" 
-                    Height="65" HorizontalAlignment="Center" />
-            <Button x:Name="MoveCard" Content="Move Card Column" Width="200" 
-                    Height="65" HorizontalAlignment="Center" />
-            <Button x:Name="ShowBoard" Content="Show Board" Width="200" 
-                    Height="65" HorizontalAlignment="Center" />
-        </StackPanel>
+        <Frame Source="/Views/Landing.xaml" NavigationUIVisibility="Hidden" />
+
     </Grid>
 </Window>
