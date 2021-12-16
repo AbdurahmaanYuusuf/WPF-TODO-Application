@@ -18,9 +18,9 @@ namespace WPF_TODO_Application.Views
     /// <summary>
     /// Interaction logic for MoveCardPage1.xaml
     /// </summary>
-    public partial class MoveCardPage1 : Page
+    public partial class MoveCardPage : Page
     {
-        public MoveCardPage1()
+        public MoveCardPage()
         {
             InitializeComponent();
         }

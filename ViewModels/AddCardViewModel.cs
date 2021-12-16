@@ -27,31 +27,31 @@ namespace WPF_TODO_Application.ViewModels
 
         {
             get { return _board; }
-            set { _board = value; OnPropertyChanged("Persons"); }
+            set { _board = value; OnPropertyChanged("Board"); }
         }
 
-        private ICommand addCardCommand;
+        private ICommand addCardCommand { get; set; }
         public ICommand AddCardCommand
         {
             get
             {
                 if (addCardCommand == null)
                 {
-                    addCardCommand = new AddCardCommand(AddCardExecute, CanAddCardExecute);
+                    addCardCommand = new AddCardCommand(AddCardExecute, CanAddCardExecute, false);
                 }
                 return addCardCommand;
             }
             set
             {
-               addCardCommand=value;
+                addCardCommand = value;
             }
         }
 
         private bool CanAddCardExecute(object arg)
-        { 
-            if (string.IsNullOrEmpty(Card.CardName) || 
-                string.IsNullOrEmpty(Card.CardContent) || 
-                string.IsNullOrEmpty(Card.CardSize)||
+        {
+            if (string.IsNullOrEmpty(Card.CardName)   ||
+                string.IsNullOrEmpty(Card.CardContent)||
+                string.IsNullOrEmpty(Card.CardSize)   ||
                 string.IsNullOrEmpty(Card.TaskAppointee))
             {
                 return false;
@@ -75,16 +75,11 @@ namespace WPF_TODO_Application.ViewModels
             DbServices.AddCard(DBCard);
         }
 
-        
-        //public ICommand GoToMainWindowCommand { get; set; }
 
         public AddCardViewModel()
         {
             Card = new Card();
             Board = new ObservableCollection<Card>();
-
-            this.AddCardCommand = new AddCardCommand(AddCardExecute, CanAddCardExecute);
-            //GoToMainWindowCommand = new GoToMainWindowCommand();
         }
         
     }

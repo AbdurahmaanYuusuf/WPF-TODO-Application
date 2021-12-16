@@ -8,8 +8,7 @@ namespace WPF_TODO_Application.Commands
 {
     public class MoveCardColumnCommand : CommandBase
     {
-        public MoveCardColumnCommand(Action<object> executeAction, Func<object, bool> canExecute) 
-            : base(executeAction, canExecute)
+        public MoveCardColumnCommand(Action<object> executeAction, Func<object, bool> canExecute, bool canExecuteCache) : base(executeAction, canExecute, canExecuteCache)
         {
         }
     }

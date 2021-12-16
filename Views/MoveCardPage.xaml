@@ -1,14 +1,21 @@
-﻿<Page x:Class="WPF_TODO_Application.Views.MoveCardPage1"
+﻿<Page x:Class="WPF_TODO_Application.Views.MoveCardPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:WPF_TODO_Application.Views"
+      xmlns:local="clr-namespace:WPF_TODO_Application"
+      xmlns:vm="clr-namespace:WPF_TODO_Application.ViewModels"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="MoveCardPage1">
+      Title="MoveCardPage">
 
-    <Grid Background="White">
+    <Page.Resources>
+        <vm:MoveCardViewModel x:Key="MoveCardViewModel"/>
+    </Page.Resources>
+
+    <Grid DataContext="{Binding Source={StaticResource MoveCardViewModel}}" 
+          Background="White">
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
@@ -26,25 +33,28 @@
                    Grid.Column="0"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"/>
+        
         <TextBox Name="CardNameTextBox"
                  Grid.Row="0"
                  Grid.Column="1"
                  Width="400"
                  Height="50"
-                 HorizontalAlignment="Center"/>
+                 HorizontalAlignment="Center"
+                 Text="{Binding CardName, Mode=TwoWay}"/>
+        
         <TextBlock Text="Choose Column To Move Card To: "
                    Grid.Row="2" 
                    Grid.Column="0"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"/>
 
-        <ComboBox Name="BoardColumnComboBox" Grid.Row="2" Grid.Column="1">
-            <ComboBoxItem Name="TODOComboBoxItem">TODO</ComboBoxItem>
-            <ComboBoxItem Name="INPROGRESSComboBoxItem">IN PROGRESS</ComboBoxItem>
-            <ComboBoxItem Name="DONEComboBoxItem">DONE</ComboBoxItem>
-        </ComboBox>
+        <ComboBox ItemsSource="{Binding Source={local:EnumBindingSource {x:Type local:BoardColumn}}}"
+                  SelectedItem="{Binding ColumnToMoveCardTo, Mode=TwoWay}"
+                  Grid.Row="2" Grid.Column="1"
+                  Height="25" Width="120"/>
 
         <Button Name="MoveCardColumnButton"
+                Command="{Binding MoveCardColumnCommand}"
                 Content="Move Card Column"
                 Grid.Row="3"
                 Grid.Column="1"

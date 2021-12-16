@@ -15,18 +15,18 @@ namespace WPF_TODO_Application.ViewModels
         public string CardName
         {
             get { return _cardName; }
-            set { _cardName = value; OnPropertyChanged(CardName); }
+            set { _cardName = value; OnPropertyChanged("CardName"); }
         }
 
 
-        private ICommand removeCardCommand;
+        private ICommand removeCardCommand { get; set; }
         public ICommand RemoveCardCommand
         {
             get
             {
                 if (removeCardCommand == null)
                 {
-                    removeCardCommand = new RemoveCardCommand(RemoveCardExecute, CanReomoveCardExecute);
+                    removeCardCommand = new RemoveCardCommand(RemoveCardExecute, CanReomoveCardExecute, false);
                 }
                 return removeCardCommand;
             }
@@ -59,7 +59,7 @@ namespace WPF_TODO_Application.ViewModels
         public RemoveCardViewModel()
         {
             
-            this.RemoveCardCommand = new RemoveCardCommand(RemoveCardExecute, CanReomoveCardExecute);
+            //this.RemoveCardCommand = new RemoveCardCommand(RemoveCardExecute, CanReomoveCardExecute);
             //GoToMainWindowCommand = new GoToMainWindowCommand();
         }
     }

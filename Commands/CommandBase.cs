@@ -11,7 +11,9 @@ namespace WPF_TODO_Application.Commands
     {
         Action<object> executeAction;
         Func<object, bool> canExecute;
-        public event EventHandler CanExecuteChanged;
+        bool canExecuteCache;
+
+        //public event EventHandler CanExecuteChanged;
 
         public void Execute(object parameter)
         {
@@ -28,16 +30,26 @@ namespace WPF_TODO_Application.Commands
                 return canExecute(parameter);
             }
         }
-        protected void OnCanExecuteChanged()
+        
+        public event EventHandler CanExecuteChanged
         {
-            CanExecuteChanged?.Invoke(this, new EventArgs());
+            add
+            {
+                CommandManager.RequerySuggested += value;
+            }
+            remove
+            {
+                CommandManager.RequerySuggested -= value;
+            }
         }
 
-        public CommandBase(Action<object> executeAction, Func<object, bool> canExecute)
+        public CommandBase(Action<object> executeAction, Func<object, bool> canExecute,bool canExecuteCache)
         {
             this.executeAction = executeAction;
             this.canExecute = canExecute;
+            this.canExecuteCache = canExecuteCache;
         }
+
     }
 
 }

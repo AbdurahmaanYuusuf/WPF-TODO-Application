@@ -1,28 +1,152 @@
-﻿<Page x:Class="WPF_TODO_Application.Views.ShowBoardPage1"
+﻿<Page x:Class="WPF_TODO_Application.Views.ShowBoardPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:WPF_TODO_Application.Views"
+      xmlns:local="clr-namespace:WPF_TODO_Application"
+      xmlns:vm="clr-namespace:WPF_TODO_Application.ViewModels"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ShowBoardPage1">
+      Title="ShowBoardPage">
 
-    <Grid Background="White">
-        <DataGrid Name="Board" 
-                  ItemsSource="{Binding Board}" 
-                  AutoGenerateColumns="False" 
-                  CanUserAddRows="False"
-                  CanUserDeleteRows="False">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="TODO" 
-                                    Binding="{Binding Path=Board.TODO}"/>
-                <DataGridTextColumn Header="IN PROGRESS" 
-                                    Binding="{Binding Path=Board.INPROGRESS}"/>
-                <DataGridTextColumn Header="DONE" 
-                                    Binding="{Binding Path=Board.DONE}"/>
-            </DataGrid.Columns>
+    <Page.DataContext>
+        <vm:ShowBoardViewModel />
+    </Page.DataContext>
 
-        </DataGrid>
+
+    <Grid Background="White" >
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Button Name="ViewBoard" Content="View Board" HorizontalAlignment="Center"
+                Grid.ColumnSpan="3" Command="{Binding ShowBoardCommand}"/>
+        
+        <ListBox Grid.Column="0" Grid.Row="1" x:Name="TODO" ItemsSource="{Binding TODO_Cards}" 
+                  Width="250" Height="450" VerticalAlignment="Top">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+
+                        <StackPanel Orientation="Horizontal">
+
+                            <TextBlock Text="Card Name : " Width="100"/>
+                            <TextBlock Text="{Binding CardName}" Width="150"/>
+
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+
+                            <TextBlock Text="Card Content : " Width="100"/>
+                            <TextBlock Text="{Binding CardContent}"  Width="150"/>
+
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+
+                            <TextBlock Text="Task Assignee" Width="125"/>
+                            <TextBlock Text="Card Size" Width="125"/>
+
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+
+                            <TextBlock Text="{Binding TaskAppointee}" Width="125"/>
+                            <TextBlock Text="{Binding CardSize}" Width="125"/>
+
+                        </StackPanel>
+
+
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <ListBox Grid.Column="1" Grid.Row="1" x:Name="INPROGRESS" ItemsSource="{Binding INPROGRESS_Cards}"
+                 Width="250" Height="450" VerticalAlignment="Top">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+
+                        <StackPanel Orientation="Horizontal">
+
+                            <TextBlock Text="Card Name : " Width="100"/>
+                            <TextBlock Text="{Binding CardName}" Width="150"/>
+
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+
+                            <TextBlock Text="Card Content : " Width="100"/>
+                            <TextBlock Text="{Binding CardContent}"  Width="150"/>
+
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+
+                            <TextBlock Text="Task Assignee" Width="125"/>
+                            <TextBlock Text="Card Size" Width="125"/>
+
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+
+                            <TextBlock Text="{Binding TaskAppointee}" Width="125"/>
+                            <TextBlock Text="{Binding CardSize}" Width="125"/>
+
+                        </StackPanel>
+
+
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <ListBox Grid.Column="2" Grid.Row="1" x:Name="DONE" ItemsSource="{Binding DONE_Cards}"
+                 Width="250" Height="450" VerticalAlignment="Top">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+
+                        <StackPanel Orientation="Horizontal">
+
+                            <TextBlock Text="Card Name : " Width="100"/>
+                            <TextBlock Text="{Binding CardName}" Width="150"/>
+
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+
+                            <TextBlock Text="Card Content : " Width="100"/>
+                            <TextBlock Text="{Binding CardContent}"  Width="150"/>
+
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+
+                            <TextBlock Text="Task Assignee" Width="125"/>
+                            <TextBlock Text="Card Size" Width="125"/>
+
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+
+                            <TextBlock Text="{Binding TaskAppointee}" Width="125"/>
+                            <TextBlock Text="{Binding CardSize}" Width="125"/>
+
+                        </StackPanel>
+
+
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
     </Grid>
+
 </Page>

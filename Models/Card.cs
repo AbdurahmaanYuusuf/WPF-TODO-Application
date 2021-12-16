@@ -13,7 +13,7 @@ namespace WPF_TODO_Application.Models
         public string CardName
         {
             get { return cardName; }
-            set { cardName = value; OnPropertyChanged(cardName);}
+            set { cardName = value; OnPropertyChanged(CardName);}
         }
         
 
@@ -21,7 +21,7 @@ namespace WPF_TODO_Application.Models
         public string CardContent
         {
             get { return cardContent; }
-            set { cardContent = value; OnPropertyChanged(cardContent); }
+            set { cardContent = value; OnPropertyChanged(CardContent); }
         }
 
 
@@ -29,7 +29,7 @@ namespace WPF_TODO_Application.Models
         public string TaskAppointee
         {
             get { return taskAppointee; }
-            set { taskAppointee = value; OnPropertyChanged(taskAppointee); }
+            set { taskAppointee = value; OnPropertyChanged(TaskAppointee); }
         }
 
         
@@ -37,7 +37,7 @@ namespace WPF_TODO_Application.Models
         public string CardSize
         {
             get { return cardSize; }
-            set { cardSize = value; OnPropertyChanged(cardSize); }
+            set { cardSize = value; OnPropertyChanged(CardSize); }
         }
 
 

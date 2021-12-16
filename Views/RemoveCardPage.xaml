@@ -3,12 +3,19 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:WPF_TODO_Application.Views"
+      xmlns:local="clr-namespace:WPF_TODO_Application"
+      xmlns:vm="clr-namespace:WPF_TODO_Application.ViewModels"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="RemoveCardPage">
 
-    <Grid Background="White">
+    <Page.Resources>
+        <vm:RemoveCardViewModel x:Key="RemoveCardViewModel"/>
+    </Page.Resources>
+
+    <Grid DataContext="{Binding Source={StaticResource RemoveCardViewModel}}"
+          Background="White">
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
@@ -26,6 +33,7 @@
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"/>
         <TextBox Name="CardNameTextBox"
+                 Text="{Binding CardName, Mode=TwoWay}"
                  Grid.Row="0"
                  Grid.Column="1"
                  Width="400"
@@ -37,6 +45,7 @@
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"/>
         <Button Name="RemoveCardButton"
+                Command="{Binding RemoveCardCommand}"
                 Content="Remove Card"
                 Grid.Row="2"
                 Grid.Column="1"

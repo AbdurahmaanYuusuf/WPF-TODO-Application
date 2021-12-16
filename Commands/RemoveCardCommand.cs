@@ -9,8 +9,8 @@ namespace WPF_TODO_Application.Commands
 {
     public class RemoveCardCommand : CommandBase
     {
-        public RemoveCardCommand(Action<object> executeAction, Func<object, bool> canExecute)
-            : base(executeAction, canExecute)
+        public RemoveCardCommand(Action<object> executeAction, Func<object, bool> canExecute, bool canExecuteCache) 
+            : base(executeAction, canExecute, canExecuteCache)
         {
         }
     }

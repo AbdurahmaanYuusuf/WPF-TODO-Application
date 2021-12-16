@@ -15,19 +15,25 @@ namespace WPF_TODO_Application.ViewModels
         public string CardName
         {
             get { return _cardName; }
-            set { _cardName = value; OnPropertyChanged(CardName); }
+            set { _cardName = value; OnPropertyChanged("CardName"); }
         }
 
-        string columnToMoveCardTo;
+        private String columnToMoveCardTo;
 
-        private ICommand moveCardColumnCommand;
+        public string ColumnToMoveCardTo
+        {
+            get { return columnToMoveCardTo; }
+            set { columnToMoveCardTo = value; OnPropertyChanged("ColumnToMoveCardTo");}
+        }
+
+        private ICommand moveCardColumnCommand { get; set; }
         public ICommand MoveCardColumnCommand
         {
             get
             {
                 if (moveCardColumnCommand == null)
                 {
-                    moveCardColumnCommand = new MoveCardColumnCommand(MoveCardColumnExecute, CanMoveCardColumnExecute);
+                    moveCardColumnCommand = new MoveCardColumnCommand(MoveCardColumnExecute, CanMoveCardColumnExecute,false);
                 }
                 return moveCardColumnCommand;
             }
@@ -39,14 +45,13 @@ namespace WPF_TODO_Application.ViewModels
 
         private bool CanMoveCardColumnExecute(object arg)
         {
-            if (string.IsNullOrEmpty(CardName))
+            if (string.IsNullOrEmpty(CardName) &&
+                string.IsNullOrEmpty(columnToMoveCardTo))
             {
                 return false;
             }
-            else
-            {
-                return true;
-            }
+            
+            return true;
         }
 
         private void MoveCardColumnExecute(object obj)
@@ -60,7 +65,7 @@ namespace WPF_TODO_Application.ViewModels
         public MoveCardViewModel()
         {
 
-            this.MoveCardColumnCommand = new MoveCardColumnCommand(MoveCardColumnExecute, CanMoveCardColumnExecute);
+            //this.MoveCardColumnCommand = new MoveCardColumnCommand(MoveCardColumnExecute, CanMoveCardColumnExecute);
             //GoToMainWindowCommand = new GoToMainWindowCommand();
         }
     }

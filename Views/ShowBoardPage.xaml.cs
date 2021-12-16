@@ -12,17 +12,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPF_TODO_Application.Database;
+using WPF_TODO_Application.ViewModels;
 
 namespace WPF_TODO_Application.Views
 {
     /// <summary>
     /// Interaction logic for ShowBoardPage1.xaml
     /// </summary>
-    public partial class ShowBoardPage1 : Page
+    public partial class ShowBoardPage : Page
     {
-        public ShowBoardPage1()
+        public ShowBoardPage()
         {
             InitializeComponent();
         }
+
     }
 }

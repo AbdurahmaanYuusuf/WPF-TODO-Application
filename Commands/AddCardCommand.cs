@@ -11,8 +11,8 @@ namespace WPF_TODO_Application.Commands
 {
     public class AddCardCommand : CommandBase
     {
-        public AddCardCommand(Action<object> executeAction, Func<object, bool> canExecute)
-            : base(executeAction, canExecute)
+        public AddCardCommand(Action<object> executeAction, Func<object, bool> canExecute, bool canExecuteCache) : 
+            base(executeAction, canExecute, canExecuteCache)
         {
 
         }

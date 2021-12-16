@@ -77,5 +77,17 @@ namespace WPF_TODO_Application.Database
                 return context.Board.Where(card => card.BoardColumn == "TODO").ToList();
             }
         }
+
+        //internal static List<List<Card>> GetAllBoardColumns()
+        //{
+        //    List<List<Card>> SeperateBoardColumns = new List<List<Card>>();
+        //    using (var context = new BoardContext())
+        //    {
+        //        SeperateBoardColumns.Add(context.Board.Where(card => card.BoardColumn == "TODO").ToList());
+        //        SeperateBoardColumns.Add(context.Board.Where(card => card.BoardColumn == "IN PROGRESS").ToList());
+        //        SeperateBoardColumns.Add(context.Board.Where(card => card.BoardColumn == "DONE").ToList());
+        //        return SeperateBoardColumns;
+        //    }
+        //}
     }
 }
