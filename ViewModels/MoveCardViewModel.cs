@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using WPF_TODO_Application.Commands;
 using WPF_TODO_Application.Database;
+using WPF_TODO_Application.Models;
+using Card = WPF_TODO_Application.Database.Card;
 
 namespace WPF_TODO_Application.ViewModels
 {
@@ -16,6 +18,13 @@ namespace WPF_TODO_Application.ViewModels
         {
             get { return _cardName; }
             set { _cardName = value; OnPropertyChanged("CardName"); }
+        }
+
+        private Card card_found;
+        public Card Card_found
+        {
+            get { return card_found; }
+            set { card_found = value; OnPropertyChanged("Card_found"); }
         }
 
         private String columnToMoveCardTo;
@@ -33,7 +42,7 @@ namespace WPF_TODO_Application.ViewModels
             {
                 if (moveCardColumnCommand == null)
                 {
-                    moveCardColumnCommand = new MoveCardColumnCommand(MoveCardColumnExecute, CanMoveCardColumnExecute,false);
+                    moveCardColumnCommand = new CommandBase(MoveCardColumnExecute, CanMoveCardColumnExecute,false);
                 }
                 return moveCardColumnCommand;
             }
@@ -45,13 +54,13 @@ namespace WPF_TODO_Application.ViewModels
 
         private bool CanMoveCardColumnExecute(object arg)
         {
-            if (string.IsNullOrEmpty(CardName) &&
-                string.IsNullOrEmpty(columnToMoveCardTo))
+            if (!string.IsNullOrEmpty(CardName) &&
+                !string.IsNullOrEmpty(columnToMoveCardTo))
             {
-                return false;
+                return true;
             }
             
-            return true;
+            return false;
         }
 
         private void MoveCardColumnExecute(object obj)
@@ -60,13 +69,50 @@ namespace WPF_TODO_Application.ViewModels
         }
 
 
-        //public ICommand GoToMainWindowCommand { get; set;}
+        private ICommand searchCardCommand { get; set; }
+        public ICommand SearchCardCommand
+        {
+            get
+            {
+                if (searchCardCommand == null)
+                {
+                    searchCardCommand = new CommandBase(SearchCardExecute, CanSearchCardExecute, false);
+                }
+                return searchCardCommand;
+            }
+            set
+            {
+                searchCardCommand = value;
+            }
+        }
+
+        private bool CanSearchCardExecute(object arg)
+        {
+            return true;
+        }
+
+        private void SearchCardExecute(object obj)
+        {
+            
+            if (DbServices.GetCard(CardName) != null)
+            {
+                Card_found = DbServices.GetCard(CardName);
+            }
+            else
+            {
+                Card_found = new()
+                {
+                    CardName="NO Card Was Found!",
+                    CardContent= "NO Card Was Found! Please type the card's name correctly.",
+                    CardSize="",
+                    TaskAppointee=""
+                };
+            }
+        }
 
         public MoveCardViewModel()
         {
-
-            //this.MoveCardColumnCommand = new MoveCardColumnCommand(MoveCardColumnExecute, CanMoveCardColumnExecute);
-            //GoToMainWindowCommand = new GoToMainWindowCommand();
+            Card Card_found = new();
         }
     }
 }

@@ -37,7 +37,7 @@ namespace WPF_TODO_Application.ViewModels
             {
                 if (addCardCommand == null)
                 {
-                    addCardCommand = new AddCardCommand(AddCardExecute, CanAddCardExecute, false);
+                    addCardCommand = new CommandBase(AddCardExecute, CanAddCardExecute, false);
                 }
                 return addCardCommand;
             }

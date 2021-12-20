@@ -51,7 +51,7 @@ namespace WPF_TODO_Application.ViewModels
             {
                 if (showBoardCommand == null)
                 {
-                    showBoardCommand = new ShowBoardCommand(ShowBoardExecute, CanShowBoardExecute, false);
+                    showBoardCommand = new CommandBase(ShowBoardExecute, CanShowBoardExecute, false);
                 }
                 return showBoardCommand;
             }

@@ -15,7 +15,7 @@
 
     <Grid DataContext="{Binding Source={StaticResource RemoveCardViewModel}}"
           Background="White">
-        
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
@@ -27,23 +27,20 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Card Name: "
-                   Grid.Row="0" 
-                   Grid.Column="0"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"/>
-        <TextBox Name="CardNameTextBox"
-                 Text="{Binding CardName, Mode=TwoWay}"
-                 Grid.Row="0"
-                 Grid.Column="1"
-                 Width="400"
-                 Height="50"
-                 HorizontalAlignment="Center"/>
-        <TextBlock Text="Click Remove Card Button if you confirm card be deletd: "
-                   Grid.Row="2" 
-                   Grid.Column="0"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"/>
+        <TextBlock Text="Card Name: " Grid.Row="0"  Grid.Column="0" 
+                   HorizontalAlignment="Center" VerticalAlignment="top" 
+                   Margin="0,20,0,10" FontSize="20" FontWeight="Bold"/>
+        <StackPanel Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1">
+            <TextBox x:Name="CardNameTextBox"
+                 Width="360" Margin="0,20,0,10"
+                 Text="{Binding CardName, Mode=TwoWay}" Height="24"/>
+            <Button x:Name="SearchCard" Content="Search Card" 
+                Command="{Binding SearchCardCommand}" Width="224"/>
+
+        </StackPanel>
+        <TextBlock
+                   Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right"
+                   VerticalAlignment="Center" FontSize="15" FontWeight="Bold"><Run Text="Click Remove Card Button "/><Run Language="tr-tr" Text="To"/><Run Text=" confirm card"/><Run Text=" delet"/><Run Language="tr-tr" Text="ion"/><Run Text=": "/></TextBlock>
         <Button Name="RemoveCardButton"
                 Command="{Binding RemoveCardCommand}"
                 Content="Remove Card"
@@ -52,5 +49,40 @@
                 Width="200"
                 Height="50"
                 HorizontalAlignment="Center"/>
+
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Vertical" Margin="200,0,0,0"
+                    VerticalAlignment="Center" HorizontalAlignment="left" Height="200" Width="600">
+
+            <StackPanel Height="30" Orientation="Horizontal">
+
+                <TextBlock Width="133" ><Run FontSize="20" FontWeight="Bold" Text="Card Name : "/></TextBlock>
+                <TextBlock Text="{Binding Card_found.CardName, Mode=TwoWay}" />
+
+            </StackPanel>
+
+            <StackPanel Height="80" Orientation="Horizontal" >
+
+                <TextBlock Width="200"><Run FontSize="20" FontWeight="Bold" Text="Card Content : "/></TextBlock>
+                <TextBlock Text="{Binding Card_found.CardContent, Mode=TwoWay}" Width="400"  />
+
+            </StackPanel>
+
+            <StackPanel Height="40" Orientation="Horizontal">
+
+                <TextBlock Width="243"><Run FontSize="20" FontWeight="Bold" Text="Task Assignee"/></TextBlock>
+                <TextBlock Width="211"><Run FontSize="20" FontWeight="Bold" Text="Card Size"/></TextBlock>
+
+            </StackPanel>
+
+            <StackPanel Height="40" Orientation="Horizontal">
+
+                <TextBlock Text="{Binding Card_found.TaskAppointee, Mode=TwoWay}" Width="243"/>
+                <TextBlock Text="{Binding Card_found.CardSize, Mode=TwoWay}"  Width="211"/>
+
+            </StackPanel>
+
+
+        </StackPanel>
+
     </Grid>
 </Page>
